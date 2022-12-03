@@ -1,0 +1,20 @@
+import React from 'react'
+import logo from '../../assets/logo.svg'
+import { BsCart} from "react-icons/bs";
+import Badge from 'react-bootstrap/Badge';
+import { Link , useLocation} from "react-router-dom";
+const Navbar = () => {
+    const location=useLocation()
+
+    return (
+        <nav className='w-full px-[40px] flex items-center justify-between shadow-md mb-[100px] p-[20px]'>
+            <Link to='/'> <img src={logo} alt="" className=' w-[200px] ' /></Link>
+            {location.pathname==='/' ? ( <Link to='/Cart'>
+            <button className='flex flex-col-reverse items-center'> <BsCart /> <span className='w-[20px] h-[20px] rounded-full bg-red-500 flex items-center justify-center text-slate-100 text-[13px]'><Badge>1</Badge></span></button>
+            </Link>) : null}
+           
+        </nav>
+    )
+}
+
+export default Navbar

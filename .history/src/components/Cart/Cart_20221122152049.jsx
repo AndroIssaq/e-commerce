@@ -1,0 +1,32 @@
+import React from 'react'
+import CartProduct from './CartProduct'
+const Cart = ({cart , HandleEmptyCart, removeCartProduct,updateCartProductQuantity}) => {
+    console.log(cart);
+
+    if(cart.total_items===0){
+        return  (
+            <h1 className='text-[30px]'>There is No Items Yet</h1>
+        )
+    }else{
+        return (
+    <main>
+        <div className='m-auto w-[90%] '>
+            <h1 className=' text-[30px] font-bold mb-[50px] ml-[50px]'>Your Shopping Cart</h1>
+            <div className='product flex  mb-[50px] gap-[20px] items-start justify-center flex-wrap'>
+                {
+                    cart.line_items?.map(item=>{
+                        return (
+                            <CartProduct cartItemImage={item.image.url} cartItemName={item.name} cartItemPrice={item.price.formatted_with_symbol} itemQuantity={item.quantity}   iupdateCartProductQuantity={updateCartProductQuantity} removeCartProduct={removeCartProduct} HandleEmptyCart={HandleEmptyCart}/>
+                        )
+                    })
+
+                }
+            </div>
+        </div>
+    </main>
+    )
+    }
+   
+}
+
+export default Cart
